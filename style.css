@@ -9,9 +9,14 @@
 body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
+    background: linear-gradient(to right, #f0f4f8, #e6edf3);
+
 }
 
 h1 {
+    background: linear-gradient(90deg, #138065, #0e5d48);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
   margin: 20px 0 40px 0;
   font-size: 36px;
@@ -45,6 +50,12 @@ form {
   cursor: pointer;
   box-shadow: 0 0 6px rgba(0,0,0,0.2);
 }
+#loader {
+  display: none;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
 
 .search-results {
   display: flex;
@@ -52,6 +63,10 @@ form {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
+  .search-results {
+  gap: 20px;
+}
+
 }
 
 .search-result {
@@ -65,7 +80,14 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+    background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1), inset 0 0 10px rgba(255,255,255,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
 }
+
 
 .search-result img {
   width: 100%;
@@ -78,6 +100,11 @@ form {
 .search-result:hover img {
   opacity: 0.8;
 }
+.search-result:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.2);
+}
+
 
 .search-result a {
   margin-top: 10px;
@@ -102,6 +129,7 @@ form {
 .download-btn:hover {
   background-color: #5fb3ef;
   
+  
 }
 
 #show-more-button {
@@ -115,6 +143,36 @@ form {
   border-radius: 5px;
   cursor: pointer;
 }
+#show-more-button:active{
+  transform: translateY(2px);
+}
+#show-more-button {
+  transition: transform 0.1s ease;
+}
+
+#search-button:active{
+  transform: translateY(2px);
+}
+#search-button{
+   background: linear-gradient(90deg, #138065, #0e5d48);
+  color: #fff;
+
+  transition: transform 0.1s ease;
+}
+
+#loader {
+  display: none;
+  text-align: center;
+  font-size: 18px;
+  color: #138065;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
 
 @media screen and (max-width: 768px) {
   .search-result {

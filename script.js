@@ -4,13 +4,18 @@ const formEl = document.querySelector("form");
 const inputE1 = document.getElementById("search-input");
 const searchResults = document.querySelector(".search-results");
 const showMore = document.getElementById("show-more-button");
+const loader = document.getElementById("loader");
 
 let inputData = "";
 let page = 1;
 
 async function searchImages() {
-    inputData = inputE1.value;
-    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`;
+    inputData = inputE1.value.trim();
+    if (!inputData) return;
+
+    loader.style.display = "block"; // show loader
+
+    const url = `https://api.unsplash.com/search/photos?page=${page}&per_page=24&query=${inputData}&client_id=${accessKey}`;
 
     const response = await fetch(url);
     const data = await response.json();
@@ -22,10 +27,11 @@ async function searchImages() {
         const imageWrapper = document.createElement('div');
         imageWrapper.classList.add("search-result");
 
-        // Image
+        // Image with lazy loading
         const image = document.createElement('img');
-        image.src = result.urls.small;
+        image.src = result.urls.thumb; // small size for speed
         image.alt = result.alt_description || "Unsplash Image";
+        image.loading = "lazy"; // lazy loading
 
         // Unsplash link
         const imageLink = document.createElement('a');
@@ -40,23 +46,39 @@ async function searchImages() {
         downloadBtn.textContent = "Download";
         downloadBtn.classList.add("download-btn");
 
+        // Append to wrapper
         imageWrapper.appendChild(image);
         imageWrapper.appendChild(imageLink);
         imageWrapper.appendChild(downloadBtn);
         searchResults.appendChild(imageWrapper);
     });
 
+    loader.style.display = "none"; // hide loader
     page++;
     if (page > 1) showMore.style.display = "block";
 }
 
-// Event listeners
+// Form submit
 formEl.addEventListener("submit", (event) => {
     event.preventDefault();
     page = 1;
     searchImages();
 });
 
+// Show more button
 showMore.addEventListener("click", () => {
     searchImages();
+});
+
+
+
+
+
+showMore.addEventListener("click", () => {
+    searchImages().then(() => {
+        window.scrollTo({
+            top: searchResults.lastElementChild.offsetTop,
+            behavior: "smooth"
+        });
+    });
 });
