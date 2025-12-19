@@ -13,7 +13,6 @@ async function searchImages() {
     inputData = inputE1.value.trim();
     if (!inputData) return;
 
-    loader.style.display = "block"; // show loader
 
     const url = `https://api.unsplash.com/search/photos?page=${page}&per_page=24&query=${inputData}&client_id=${accessKey}`;
 
@@ -53,7 +52,6 @@ async function searchImages() {
         searchResults.appendChild(imageWrapper);
     });
 
-    loader.style.display = "none"; 
     page++;
     if (page > 1) showMore.style.display = "block";
 }
