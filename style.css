@@ -167,20 +167,7 @@ form {
   color: #138065;
   animation: pulse 1s infinite;
 }
-footer{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  padding: 20px ;
-  color: #008cba;
-  user-select: none;
-}
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
 
 
 @media screen and (max-width: 768px) {

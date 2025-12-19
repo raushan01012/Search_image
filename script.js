@@ -28,7 +28,7 @@ async function searchImages() {
 
 
         const image = document.createElement('img');
-        image.src = result.urls.small;
+        image.src = result.urls.regular;
         image.alt = result.alt_description || "Unsplash Image";
         image.loading = "lazy"; 
 
