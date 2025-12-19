@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0 40px 0;
+  font-size: 36px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+#search-input {
+  width: 60%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+#search-button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #138065;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+}
+
+.search-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.search-result {
+  width: 30%;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  overflow: hidden;
+  padding: 10px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-result img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.search-result:hover img {
+  opacity: 0.8;
+}
+
+.search-result a {
+  margin-top: 10px;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.download-btn {
+  margin-top: 5px;
+  padding: 5px 10px;
+  background-color: #f4e6e2;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #5fb3ef;
+  
+}
+
+#show-more-button {
+  display: none;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #008cba;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .search-result {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .search-result {
+    width: 100%;
+  }
+}
